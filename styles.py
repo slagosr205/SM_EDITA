@@ -1,6 +1,7 @@
 """Estilos y temas corporativos para el sistema"""
 import tkinter as tk
 from tkinter import ttk
+from datetime import datetime
 
 class ElegantStyles:
     COLORS = {
@@ -115,7 +116,6 @@ class CorporateDashboard:
         tk.Label(title_frame, text=titulo.upper(),
                 font=("Segoe UI", 18, "bold"), bg=CorporateDashboard.HEADER_BG, fg="white").pack(anchor="w")
         
-        import datetime
         tk.Label(title_frame, text=datetime.now().strftime("%A, %d de %B del %Y"),
                 font=("Segoe UI", 10), bg=CorporateDashboard.HEADER_BG, fg="#64748b").pack(anchor="w")
         

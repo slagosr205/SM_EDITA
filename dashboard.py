@@ -1,6 +1,7 @@
 """Dashboard ejecutivo corporativo - Disenado para propietarios y gerentes"""
 import tkinter as tk
 from tkinter import ttk
+from datetime import datetime
 from database import get_connection
 from styles import ElegantStyles
 
@@ -112,7 +113,6 @@ class DashboardWindow:
         tk.Label(title_frame, text="PANEL DE CONTROL EJECUTIVO",
                 font=("Segoe UI", 16, "bold"), bg=CorporateDashboard.COLORS["bg_dark"], fg="white").pack(anchor="w")
         
-        import datetime
         now = datetime.now()
         fecha_str = now.strftime("%d de %B del %Y").capitalize()
         hora_str = now.strftime("%H:%M")

@@ -6,7 +6,7 @@ from styles import ElegantStyles
 from dashboard import DashboardWindow
 from database import get_connection, get_impresiones_count, registrar_impresion, get_contrato_completo, generar_contrato_pdf, get_config_sistema, update_config_sistema, get_monedas
 import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 import random
 
 class RoundedFrame(tk.Canvas):
@@ -1790,8 +1790,7 @@ class MainWindow:
             
             ws.row_dimensions[1].height = 25
             
-            import datetime as dt
-            filename = f"productos_{dt.datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
+            filename = f"productos_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
             filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), filename)
             wb.save(filepath)
             
