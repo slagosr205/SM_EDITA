@@ -1075,7 +1075,7 @@ class MainWindow:
         cursor = conn.cursor()
         cursor.execute("SELECT c.*, p.nombre as proveedor FROM contratos c JOIN proveedores p ON c.id_proveedor = p.id_proveedor ORDER BY c.fecha_inicio DESC")
         
-        hoy = datetime.now().date()
+        hoy = datetime.datetime.now().date()
         dias_por_vencer = 30
         
         for row in cursor.fetchall():
@@ -1464,12 +1464,12 @@ class MainWindow:
         tk.Label(card, text="Fecha Inicio:", font=("Segoe UI", 10, "bold"), bg="white").grid(row=1, column=0, sticky="w", pady=10)
         entry_inicio = ttk.Entry(card, width=35, font=("Segoe UI", 11))
         entry_inicio.grid(row=1, column=1, pady=10, padx=10)
-        entry_inicio.insert(0, datetime.now().strftime("%Y-%m-%d"))
+        entry_inicio.insert(0, datetime.datetime.now().strftime("%Y-%m-%d"))
         
         tk.Label(card, text="Fecha Fin:", font=("Segoe UI", 10, "bold"), bg="white").grid(row=2, column=0, sticky="w", pady=10)
         entry_fin = ttk.Entry(card, width=35, font=("Segoe UI", 11))
         entry_fin.grid(row=2, column=1, pady=10, padx=10)
-        entry_fin.insert(0, (datetime.now().replace(day=1) + timedelta(days=365)).strftime("%Y-%m-%d"))
+        entry_fin.insert(0, (datetime.datetime.now().replace(day=1) + timedelta(days=365)).strftime("%Y-%m-%d"))
         
         tk.Label(card, text="Comision (%):", font=("Segoe UI", 10, "bold"), bg="white").grid(row=3, column=0, sticky="w", pady=10)
         entry_comision = ttk.Entry(card, width=35, font=("Segoe UI", 11))
@@ -2198,7 +2198,7 @@ class MainWindow:
                         FROM productos p
                         JOIN inventarios i ON p.id_producto = i.id_producto
                         WHERE i.id_inventario = ?
-                    """, (datetime.now().strftime("%Y-%m-%d"), item["cantidad"], item["id_inventario"]))
+                    """, (datetime.datetime.now().strftime("%Y-%m-%d"), item["cantidad"], item["id_inventario"]))
                     creados += 1
                 
                 conn.commit()
@@ -2249,7 +2249,7 @@ class MainWindow:
                         SET cant_actual = cant_actual + ?,
                             f_ultimo_surtido = ?
                         WHERE id_inventario = ?
-                    """, (item["cantidad"], datetime.now().strftime("%Y-%m-%d %H:%M:%S"), item["id_inventario"]))
+                    """, (item["cantidad"], datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), item["id_inventario"]))
                     
                     cursor.execute("""
                         INSERT INTO historial_inventario (id_inventario, tipo_movimiento, cantidad, observaciones, usuario)
@@ -2297,7 +2297,7 @@ class MainWindow:
             cursor.execute("SELECT COUNT(*) FROM planif_surtido WHERE id_producto=? AND id_espacio=? AND estado IN ('pendiente', 'aprobado')", (item["id_producto"], item["id_espacio"]))
             if cursor.fetchone()[0] == 0:
                 cursor.execute("INSERT INTO planif_surtido (id_producto, id_espacio, fecha_planificada, cant_solicitada, estado) VALUES (?, ?, ?, ?, 'pendiente')",
-                             (item["id_producto"], item["id_espacio"], datetime.now().strftime("%Y-%m-%d"), cantidad))
+                             (item["id_producto"], item["id_espacio"], datetime.datetime.now().strftime("%Y-%m-%d"), cantidad))
                 creados += 1
         conn.commit()
         conn.close()
@@ -2429,12 +2429,12 @@ class MainWindow:
         tk.Label(card, text="Fecha Inicio:", font=("Segoe UI", 10, "bold"), bg="white").grid(row=1, column=0, sticky="w", pady=10)
         entry_inicio = ttk.Entry(card, width=35, font=("Segoe UI", 11))
         entry_inicio.grid(row=1, column=1, pady=10, padx=10)
-        entry_inicio.insert(0, datetime.now().replace(day=1).strftime("%Y-%m-%d"))
+        entry_inicio.insert(0, datetime.datetime.now().replace(day=1).strftime("%Y-%m-%d"))
         
         tk.Label(card, text="Fecha Fin:", font=("Segoe UI", 10, "bold"), bg="white").grid(row=2, column=0, sticky="w", pady=10)
         entry_fin = ttk.Entry(card, width=35, font=("Segoe UI", 11))
         entry_fin.grid(row=2, column=1, pady=10, padx=10)
-        entry_fin.insert(0, datetime.now().strftime("%Y-%m-%d"))
+        entry_fin.insert(0, datetime.datetime.now().strftime("%Y-%m-%d"))
         
         def guardar():
             if not prov_var.get():
