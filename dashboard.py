@@ -574,8 +574,8 @@ class DashboardWindow:
             row.pack(fill="x", padx=10, pady=4)
             
             rank = tk.Label(row, text=f"#{i+1}", font=("Segoe UI", 10, "bold"),
-                           bg="white", fg=colors[i % len(colors)])
-            rank.pack(side="left", padx=(0, 10), width=30)
+                           bg="white", fg=colors[i % len(colors)], width=4)
+            rank.pack(side="left", padx=(0, 10))
             
             info_frame = tk.Frame(row, bg="white")
             info_frame.pack(side="left", fill="x", expand=True)
