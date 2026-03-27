@@ -113,7 +113,7 @@ class DashboardWindow:
                 font=("Segoe UI", 16, "bold"), bg=CorporateDashboard.COLORS["bg_dark"], fg="white").pack(anchor="w")
         
         import datetime
-        now = datetime.datetime.now()
+        now = datetime.now()
         fecha_str = now.strftime("%d de %B del %Y").capitalize()
         hora_str = now.strftime("%H:%M")
         tk.Label(title_frame, text=f"{fecha_str} | {hora_str}",

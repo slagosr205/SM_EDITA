@@ -116,7 +116,7 @@ class CorporateDashboard:
                 font=("Segoe UI", 18, "bold"), bg=CorporateDashboard.HEADER_BG, fg="white").pack(anchor="w")
         
         import datetime
-        tk.Label(title_frame, text=datetime.datetime.now().strftime("%A, %d de %B del %Y"),
+        tk.Label(title_frame, text=datetime.now().strftime("%A, %d de %B del %Y"),
                 font=("Segoe UI", 10), bg=CorporateDashboard.HEADER_BG, fg="#64748b").pack(anchor="w")
         
         user_frame = tk.Frame(header, bg=CorporateDashboard.HEADER_BG)
