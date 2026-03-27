@@ -58,6 +58,12 @@ class LoginWindow:
                 font=("Segoe UI", 9), 
                 bg=self.S.COLORS["primary"], fg="#7f8c8d").pack(pady=20)
         
+        tk.Button(left_panel, text="Acerca de / Licencia", 
+                font=("Segoe UI", 9),
+                bg=self.S.COLORS["primary"], fg="#7f8c8d",
+                relief="flat", cursor="hand2",
+                command=self.mostrar_licencia).pack(pady=5)
+        
         right_panel = tk.Frame(self.window, bg=self.S.COLORS["bg_main"])
         right_panel.pack(side="right", fill="both", expand=True)
         
@@ -161,6 +167,62 @@ class LoginWindow:
             
     def run(self):
         self.window.mainloop()
+    
+    def mostrar_licencia(self):
+        about = tk.Toplevel(self.window)
+        about.title("Acerca de - Tienda Concepto")
+        about.geometry("550x450")
+        about.configure(bg="white")
+        about.transient(self.window)
+        about.grab_set()
+        
+        screen_width = about.winfo_screenwidth()
+        screen_height = about.winfo_screenheight()
+        x = (screen_width // 2) - (550 // 2)
+        y = (screen_height // 2) - (450 // 2)
+        about.geometry(f"550x450+{x}+{y}")
+        
+        header = tk.Frame(about, bg=self.S.COLORS["primary"])
+        header.pack(fill="x")
+        
+        tk.Label(header, text="TIENDA CONCEPTO", font=("Segoe UI", 20, "bold"),
+                bg=self.S.COLORS["primary"], fg="white").pack(pady=20)
+        tk.Label(header, text="Sistema de Gestion Integral", font=("Segoe UI", 11),
+                bg=self.S.COLORS["primary"], fg="#95a5a6").pack(pady=(0, 15))
+        
+        card = tk.Frame(about, bg="white")
+        card.pack(fill="both", expand=True, padx=30, pady=20)
+        
+        info_text = """
+        VERSION
+        1.0.0
+        
+        INFORMACION DEL SOFTWARE
+        Tienda Concepto - Sistema de Gestion es un software
+        propietario protegido por leyes de propiedad intelectual.
+        
+        LICENCIA
+        Este es un software PROPIETARIO.
+        © 2026 Tienda Concepto. Todos los derechos reservados.
+        
+        RESTRICCIONES DE USO
+        • No esta permitido copiar, modificar o distribuir
+        • No esta permitida la ingenieria inversa
+        • No sublicenciar, arrendar o prestar el software
+        • No eliminar los avisos de copyright
+        
+        CONTACTO
+        Para soporte y consultas:
+        Email: soporte@tiendaconcepto.com
+        """
+        
+        tk.Label(card, text=info_text, font=("Segoe UI", 10),
+                bg="white", fg=self.S.COLORS["text_dark"], justify="left", anchor="nw").pack(fill="both", expand=True)
+        
+        tk.Button(about, text="Cerrar", font=("Segoe UI", 11, "bold"),
+                 bg=self.S.COLORS["primary"], fg="white", relief="flat",
+                 cursor="hand2", padx=30, pady=10,
+                 command=about.destroy).pack(pady=15)
 
 
 class UserSession:

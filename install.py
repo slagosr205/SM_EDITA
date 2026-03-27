@@ -30,7 +30,7 @@ class InstallerWindow:
         self.center_window()
         
         self.current_step = 0
-        self.steps = ["Bienvenida", "Configuracion", "Base de Datos", "Usuario Admin", "Finalizar"]
+        self.steps = ["Bienvenida", "Configuracion", "Base de Datos", "Usuario Admin", "Licencia", "Finalizar"]
         
         self.config_data = {
             "nombre_tienda": "Tienda Concepto",
@@ -268,6 +268,54 @@ class InstallerWindow:
         tk.Label(inner, text="La contrasena debe tener al menos 6 caracteres",
                 font=("Segoe UI", 9), bg="white", fg=COLORS["text_light"]).pack(pady=(5, 0))
     
+    def step_licencia(self):
+        card = tk.Frame(self.content_frame, bg="white")
+        card.pack(fill="both", expand=True)
+        
+        shadow = tk.Frame(card, bg="#d1d5db")
+        shadow.pack(padx=3, pady=3, fill="both", expand=True)
+        
+        inner = tk.Frame(shadow, bg="white")
+        inner.pack(padx=2, pady=2, fill="both", expand=True)
+        
+        tk.Label(inner, text="Licencia de Software", font=("Segoe UI", 18, "bold"),
+                bg="white", fg=COLORS["text_dark"]).pack(pady=(20, 5))
+        tk.Label(inner, text="Tienda Concepto - Sistema de Gestion",
+                font=("Segoe UI", 11), bg="white", fg=COLORS["text_medium"]).pack()
+        
+        license_text = """SOFTWARE PROPIETARIO - TIENDA CONCEPTO
+© 2026 Tienda Concepto. Todos los derechos reservados.
+
+Este software esta protegido por leyes de propiedad intelectual.
+El licenciatario obtiene una licencia de uso no exclusiva.
+
+RESTRICCIONES:
+• No copiar, modificar o distribuir el software
+• No realizar ingenieria inversa
+• No sublicenciar, arrendar o prestar el software
+• No eliminar avisos de copyright
+
+El uso de este software implica la aceptacion
+de los terminos y condiciones de la licencia.
+
+Para mas informacion, consulte el archivo LICENSE.txt"""
+
+        text_frame = tk.Frame(inner, bg="#f8fafc")
+        text_frame.pack(pady=15, padx=40, fill="both", expand=True)
+        
+        license_label = tk.Label(text_frame, text=license_text, font=("Consolas", 9),
+                               bg="#f8fafc", fg=COLORS["text_dark"], justify="left", anchor="nw")
+        license_label.pack(fill="both", expand=True, padx=15, pady=10)
+        
+        self.licencia_aceptada = tk.BooleanVar(value=False)
+        
+        accept_frame = tk.Frame(inner, bg="white")
+        accept_frame.pack(pady=10, padx=40, fill="x")
+        
+        tk.Checkbutton(accept_frame, text="Acepto los terminos y condiciones de la licencia",
+                      variable=self.licencia_aceptada, font=("Segoe UI", 10),
+                      bg="white", activebackground="white").pack(anchor="w")
+    
     def step_finalizar(self):
         card = tk.Frame(self.content_frame, bg="white")
         card.pack(fill="both", expand=True)
@@ -295,6 +343,7 @@ class InstallerWindow:
             f"Moneda Local: {self.config_data['moneda_local']}",
             f"Tasa de Cambio: {self.config_data['tasa_cambio']}",
             f"Usuario Admin: {self.config_data['admin_email']}",
+            f"Licencia: Aceptada (Software Propietario)",
         ]
         
         for item in resumen:
@@ -337,6 +386,10 @@ class InstallerWindow:
             self.config_data["admin_email"] = email
             self.config_data["admin_password"] = password
         elif self.current_step == 4:
+            if not self.licencia_aceptada.get():
+                messagebox.showwarning("Licencia requerida", "Debe aceptar los terminos de la licencia para continuar")
+                return
+        elif self.current_step == 5:
             if self.config_data["admin_password"]:
                 self.instalar()
             else:

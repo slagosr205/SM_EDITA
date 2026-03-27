@@ -1,0 +1,49 @@
+# Licencia de Software - Tienda Concepto
+# © 2026 Tienda Concepto. Todos los derechos reservados.
+
+## TERMINOS Y CONDICIONES
+
+### 1. CONCESION DE LICENCIA
+Este acuerdo de licencia de software ("Licencia") se celebra entre Tienda Concepto ("Licenciante") y el usuario final ("Licenciatario").
+
+### 2. PROPIEDAD INTELECTUAL
+El software "Tienda Concepto" ("Software"), incluyendo pero no limitándose a:
+- Código fuente y código objeto
+- Bases de datos
+- Documentación
+- Interfaces de usuario
+- Gráficos y diseño
+
+Son propiedad exclusiva del Licenciante y están protegidos por las leyes de propiedad intelectual vigentes.
+
+### 3. RESTRICCIONES DE USO
+El Licenciatario se compromete a:
+- No copiar, modificar o distribuir el Software
+- No realizar ingeniería inversa del Software
+- No eliminar o modificar notices de copyright
+- No utilizar el Software para fines ilícitos
+- No sublicenciar, arrendar o prestar el Software
+
+### 4. LICENCIA DE USO
+Este Software se concede bajo licencia, no se vende. El Licenciatario obtiene únicamente el derecho no exclusivo de usar el Software según los términos de esta Licencia.
+
+### 5. DURACION
+Esta Licencia es efectiva desde la fecha de instalación hasta que el Licenciatario deje de usar el Software, o hasta que se rescinda conforme a los términos aquí establecidos.
+
+### 6. RESCISIÓN
+El Licenciante puede rescindir esta Licencia si el Licenciatario incumple cualquier término de la misma. En caso de rescisión, el Licenciatario deberá destruir todas las copias del Software.
+
+### 7. GARANTIA LIMITADA
+EL SOFTWARE SE PROPORCIONA "TAL CUAL" SIN GARANTIAS DE NINGUN TIPO. EL LICENCIANTE NO GARANTIZA QUE EL SOFTWARE ESTE LIBRE DE ERRORES O QUE FUNCIONARA SIN INTERRUPCIONES.
+
+### 8. LIMITACION DE RESPONSABILIDAD
+EN NINGUN CASO EL LICENCIANTE SERA RESPONSABLE POR DAÑOS ESPECIALES, INCIDENTALES, INDIRECTOS O CONSECUENTES DERIVADOS DEL USO DEL SOFTWARE.
+
+### 9. LEY APLICABLE
+Esta Licencia se rige por las leyes de la República de Honduras.
+
+---
+
+**AL INSTALAR O UTILIZAR ESTE SOFTWARE, USTED ACEPTA ESTAR VINCULADO POR LOS TERMINOS DE ESTA LICENCIA.**
+
+Para preguntas sobre esta licencia, contacte a: legal@tiendaconcepto.com
